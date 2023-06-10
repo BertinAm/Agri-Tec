@@ -36,7 +36,6 @@ class Product(models.Model):
     quantity = models.IntegerField(default=0)
     price = models.FloatField()
     image_data = models.ImageField(upload_to='images/')
-    buyer = models.ForeignKey(Buyer, on_delete=models.CASCADE, null=True, blank=True)
     farmer = models.ForeignKey(Farmer, on_delete=models.CASCADE)
 
     def __str__(self):
