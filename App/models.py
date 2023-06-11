@@ -30,6 +30,13 @@ class Buyer(models.Model):
 
 
 class Product(models.Model):
+    CATEGORIES = [
+        ('dairy_food', 'Dairy Food'),
+        ('cash_crops', 'Cash Crops'),
+        ('vegetables', 'Vegetables'),
+        ('grains', 'Grains'),
+    ]
+
     product_id = models.AutoField(primary_key=True)
     product_name = models.CharField(max_length=100)
     product_location = models.CharField(max_length=50)
@@ -37,6 +44,7 @@ class Product(models.Model):
     price = models.FloatField()
     image_data = models.ImageField(upload_to='images/')
     farmer = models.ForeignKey(Farmer, on_delete=models.CASCADE)
+    categories = models.CharField(max_length=20, choices=CATEGORIES)
 
     def __str__(self):
         return self.product_name
